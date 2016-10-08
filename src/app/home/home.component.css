@@ -1,0 +1,12 @@
+.search-input md-input {
+    width: 100%;
+}
+
+.search-buttons {
+    text-align: center;
+    padding-top: 18px;
+}
+
+.search-buttons button {
+    width: 15%;
+}

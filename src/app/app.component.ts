@@ -7,4 +7,34 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'app works!';
+
+  appTitle = 'Dishup';
+
+  views: Object[] = [
+    {
+      name: 'Home',
+      description: '',
+      icon: 'home',
+      route: '/home'
+    },
+    {
+      name: 'Popular Dishes',
+      description: '',
+      icon: 'restaurant_menu',
+      route: '/trending'
+    },
+    {
+      name: 'My Favorites',
+      description: '',
+      icon: 'favorite', 
+      route: '/restaurants'
+    },
+    {
+      name: 'My Account',
+      description: '',
+      icon: 'account_circle', 
+      route: '/profile'
+    }
+  ];
+  
 }
