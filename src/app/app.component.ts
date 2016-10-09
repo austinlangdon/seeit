@@ -27,7 +27,7 @@ export class AppComponent {
       name: 'My Favorites',
       description: '',
       icon: 'favorite', 
-      route: '/restaurants'
+      route: '/favorites'
     },
     {
       name: 'My Account',

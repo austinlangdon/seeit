@@ -5,6 +5,9 @@ import { HttpModule } from '@angular/http';
 import { MaterialModule } from '@angular/material';
 import { routing, appRoutingProviders } from './app.routing';
 
+import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
+import { InMemoryDataService } from './services/in-memory-data-service/in-memory-data-service.service';
+
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { RestaurantsComponent } from './restaurants/restaurants.component';
@@ -17,6 +20,7 @@ import 'hammerjs';
     BrowserModule,
     FormsModule,
     HttpModule,
+    InMemoryWebApiModule.forRoot(InMemoryDataService),
     [MaterialModule.forRoot()],
     routing
   ],
