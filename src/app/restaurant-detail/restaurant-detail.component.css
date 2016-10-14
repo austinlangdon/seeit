@@ -1,0 +1,20 @@
+.menu-card-container {
+   /*margin: auto;*/
+   /*display: -webkit-flex;*/
+   display: flex;
+   /*-webkit-flex-flow: row;*/
+   flex-flow: row wrap;
+}
+
+.menu-card-container md-card {
+    /*width: 50%;
+    box-sizing: border-box;*/
+}
+
+.menu-card-container a {
+    text-decoration: none;
+}
+
+.menu-card-container a md-card {
+    cursor: pointer;
+}

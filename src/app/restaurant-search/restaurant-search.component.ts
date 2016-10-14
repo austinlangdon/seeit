@@ -37,7 +37,7 @@ export class RestaurantSearchComponent implements OnInit {
   }
 
   gotoDetail(restaurant: Restaurant): void {
-    let link = ['detail/', restaurant.id];
+    let link = ['restaurants/', restaurant.id];
     this.router.navigate(link);
   }
 }

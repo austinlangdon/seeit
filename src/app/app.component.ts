@@ -28,12 +28,6 @@ export class AppComponent {
       description: '',
       icon: 'favorite', 
       route: '/favorites'
-    },
-    {
-      name: 'My Account',
-      description: '',
-      icon: 'account_circle', 
-      route: '/profile'
     }
   ];
   

@@ -8,13 +8,13 @@ import { Restaurant } from '../../interfaces/restaurant';
 @Injectable()
 export class RestaurantService {
     
-    private restaurantsUrl = 'app/restaurants';
+    private restaurantsUrl = 'api/restaurants';
     private headers = new Headers({'Content-Type': 'application/json'});
 
     constructor(private http: Http) { }
 
     getRestaurants(): Promise<Restaurant[]> {
-        return this.http.get(this.restaurantsUrl).toPromise().then(res => { res.json().data as Restaurant[] }).catch(this.handleError);
+        return this.http.get(this.restaurantsUrl).toPromise().then(res => res.json().data as Restaurant[]).catch(this.handleError);
     }
 
     getRestaurant(id: number): Promise<Restaurant> {

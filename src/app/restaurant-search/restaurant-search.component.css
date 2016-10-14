@@ -1,3 +1,11 @@
 .search-input md-input {
     width: 100%;
 }
+
+.search-result{
+  width:100%;
+  height: 20px;
+  padding: 5px;
+  background-color: white;
+  cursor: pointer;
+}

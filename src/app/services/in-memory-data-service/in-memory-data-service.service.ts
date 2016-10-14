@@ -6,12 +6,14 @@ export class InMemoryDataService implements InMemoryDbService {
       {
             id: 1,
             name: 'RA Sushi',
+            routeName: 'ra-sushi',
             description: 'An amazing sushi place.',
-            cover_photo: './app/shared/imgs/ra/ra-sushi-cover-photo.jpg',
+            cover_photo: './assets/img/ra/ra-sushi-cover-photo.jpg',
             menus: [
                 {
                     id: 1,
                     name: 'At a Glance',
+                    link_name: 'at-a-glance',
                     items: [
                         {
                             id: 1,
@@ -32,6 +34,7 @@ export class InMemoryDataService implements InMemoryDbService {
                 {
                     id: 2,
                     name: 'Getting Started',
+                    routeName: 'getting-started',
                     items: [
                         {
                             id: 1,
@@ -45,6 +48,7 @@ export class InMemoryDataService implements InMemoryDbService {
                 {
                     id: 3,
                     name: 'Soups & Salads',
+                    routeName: 'soups-and-salads',
                     items: [
                         {
                             id: 1,
@@ -58,6 +62,7 @@ export class InMemoryDataService implements InMemoryDbService {
                 {
                     id: 4,
                     name: 'Happy Hour',
+                    routeName: 'happy-hour',
                     items: [
                         {
                             id: 1,
@@ -73,12 +78,14 @@ export class InMemoryDataService implements InMemoryDbService {
         {
             id: 2,
             name: 'Kelly\'s at Southbridge',
+            routeName: 'kellys-at-southbridge',
             description: 'An irish pub in the heart of Old Town Scottsdale.',
-            cover_photo: './app/shared/imgs/kellys/kellys-cover-photo.jpg',
+            cover_photo: './assets/img/kellys/kellys-cover-photo.jpg',
             menus: [
                 {
                     id: 1,
                     name: 'Breakfast',
+                    routeName: 'happy-hour',
                     items: [
                         {
                             id: 1,
@@ -92,6 +99,7 @@ export class InMemoryDataService implements InMemoryDbService {
                 {
                     id: 2,
                     name: 'Brunch',
+                    routeName: 'brunch',
                     items: [
                         {
                             id: 1,
@@ -105,6 +113,7 @@ export class InMemoryDataService implements InMemoryDbService {
                 {
                     id: 3,
                     name: 'Lunch',
+                    routeName: 'lunch',
                     items: [
                         {
                             id: 1,
@@ -118,6 +127,7 @@ export class InMemoryDataService implements InMemoryDbService {
                 {
                     id: 4,
                     name: 'Happy Hour',
+                    routeName: 'happy-hour',
                     items: [
                         {
                             id: 1,
@@ -131,6 +141,7 @@ export class InMemoryDataService implements InMemoryDbService {
                 {
                     id: 5,
                     name: 'Dinner',
+                    routeName: 'dinner',
                     items: [
                         {
                             id: 1,
@@ -146,8 +157,9 @@ export class InMemoryDataService implements InMemoryDbService {
         {
             id: 3,
             name: 'Cold Beers & Cheeseburgers',
+            routeName: 'cold-beers-and-cheeseburgers',
             description: 'An amazing restaurant for burger lovers.',
-            cover_photo: './app/shared/imgs/cb/cb2-cover-photo.jpg' 
+            cover_photo: './assets/img/cb/cb2-cover-photo.jpg' 
         }
     ];
     return {restaurants};
