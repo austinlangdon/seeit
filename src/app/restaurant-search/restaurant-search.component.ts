@@ -3,8 +3,8 @@ import { Router } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
 
-import { Restaurant } from '../interfaces/restaurant';
-import { RestaurantSearchService } from '../services/restaurant-search/restaurant-search.service';
+import { Restaurant } from '../shared/models/restaurant.model';
+import { RestaurantSearchService } from '../shared/services/restaurant-search.service';
 
 @Component({
   selector: 'app-restaurant-search',
@@ -37,7 +37,7 @@ export class RestaurantSearchComponent implements OnInit {
   }
 
   gotoDetail(restaurant: Restaurant): void {
-    let link = ['restaurants/', restaurant.id];
+    let link = ['restaurant/', restaurant.id];
     this.router.navigate(link);
   }
 }
