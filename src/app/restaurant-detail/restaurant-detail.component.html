@@ -3,15 +3,15 @@
     <!--<img md-card-image [src]="restaurant.cover_photo" alt="">-->
     <md-card-title>{{ restaurant.name }}</md-card-title>
     <md-card-content>{{ restaurant.description }}</md-card-content>
-    <md-grid-list cols="3" rowHeight="1:1">
+    <md-grid-list cols="3" rowHeight="3:2">
       <md-grid-tile *ngFor="let menu of restaurant.menus">
-        <!--<img md-card-image [src]="restaurant.menu[id].cover_photo" alt="">-->
+        <img md-card-image [src]="menu.cover_photo" alt="">
         <a [routerLink]="['/restaurants/' + restaurant.id + '/' + menu.id]">
           <md-grid-tile-footer>
             <h3 mid-line>{{ menu.name }}</h3>
-            <button md-icon-button>
+            <!--<button md-icon-button>
               <md-icon>favorite</md-icon>
-            </button>
+            </button>-->
           </md-grid-tile-footer>
         </a>
       </md-grid-tile>

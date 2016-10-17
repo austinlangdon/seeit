@@ -2,8 +2,8 @@ import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { Location } from '@angular/common';
 
-import { Restaurant } from '../interfaces/restaurant';
-import { RestaurantService } from '../services/restaurant/restaurant.service';
+import { Restaurant } from '../shared/models/restaurant.model';
+import { RestaurantService } from '../shared/services/restaurant.service';
 
 
 @Component({

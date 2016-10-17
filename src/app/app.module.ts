@@ -8,15 +8,25 @@ import { MaterialModule } from '@angular/material';
 import { routing, appRoutingProviders } from './app.routing';
 
 import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
-import { InMemoryDataService } from './services/in-memory-data-service/in-memory-data-service.service';
-
+import { InMemoryDataService } from './shared/services/in-memory-data-service.service';
 import { AppComponent } from './app.component';
-import { HomeComponent } from './home/home.component';
-import { RestaurantsComponent } from './restaurants/restaurants.component';
 import { RestaurantDetailComponent } from './restaurant-detail/restaurant-detail.component';
-import { RestaurantSearchComponent } from './restaurant-search/restaurant-search.component';
+
+import { HomeModule } from './home/home.module';
+import { RestaurantModule } from './restaurant/restaurant.module';
+import { AuthModule } from './auth/auth.module';
 
 import 'hammerjs';
+import { AuthComponent } from './auth/auth.component';
+
+import {
+  ApiService,
+  AuthGuard,
+  JwtService,
+  SharedModule,
+  UserService
+} from './shared';
+
 
 @NgModule({
   imports: [
@@ -25,17 +35,22 @@ import 'hammerjs';
     HttpModule,
     InMemoryWebApiModule.forRoot(InMemoryDataService),
     [MaterialModule.forRoot()],
-    routing
+    routing,
+    SharedModule,
+    AuthModule,
+    HomeModule,
+    RestaurantModule
   ],
   declarations: [
     AppComponent,
-    HomeComponent,
-    RestaurantsComponent,
-    RestaurantDetailComponent,
-    RestaurantSearchComponent
+    RestaurantDetailComponent
   ],
   providers: [
-    appRoutingProviders
+    appRoutingProviders,
+    ApiService,
+    AuthGuard,
+    JwtService,
+    UserService
   ],
   bootstrap: [AppComponent]
 })
