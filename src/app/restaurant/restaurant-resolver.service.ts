@@ -13,7 +13,7 @@ export class RestaurantResolver implements Resolve<Restaurant> {
     ) {}
 
     resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<any> {
-        return this.restaurantService.get(route.params['id'])
-            .catch((err) => this.router.navigateByUrl('/'));
-    } 
+        let id = Number(route.params['id']);
+        return this.restaurantService.getRestaurant(id);
+    }
 }

@@ -26,7 +26,7 @@ export class RestaurantDetailComponent implements OnInit {
   ngOnInit(): void {
     this.route.params.forEach((params: Params) => {
       let id = +params['id'];
-      this.restaurantService.getRestaurant(id).then(restaurant => this.restaurant = restaurant);
+      this.restaurantService.getRestaurant(id).map(restaurant => this.restaurant = restaurant);
     } )
   }
 

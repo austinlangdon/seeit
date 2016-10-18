@@ -37,7 +37,7 @@ export class ApiService {
 
     // api service methods (get, put, post, & delete)
     get(url: string, params: URLSearchParams = new URLSearchParams()): Observable<any> {
-        return this.http.get(`${url}`, { headers: this.setHeaders(), search: params })
+        return this.http.get(`${environment.api_url}${url}`, { headers: this.setHeaders(), search: params })
         .catch(this.formatErrors)
         .map((res: Response) => res.json());
     }

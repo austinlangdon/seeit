@@ -32,9 +32,10 @@ export class RestaurantService {
         .map(data => data);
     }
     
-    get(id): Observable<Restaurant> {
-        return this.apiService.get('api/restaurants/' + id)
-            .map(res => res.data);
+    get(id: Number): Observable<Restaurant> {
+        return this.apiService.get(`/restaurants/${id}`)
+            .map(res => res.data)
+            .catch(this.handleError);
     }
 
     destroy(slug) {
@@ -51,12 +52,16 @@ export class RestaurantService {
         }
     }
 
-    getRestaurants(): Promise<Restaurant[]> {
-        return this.http.get(this.restaurantsUrl).toPromise().then(res => res.json().data as Restaurant[]).catch(this.handleError);
+    getRestaurants(): Observable<Restaurant[]> {        
+        return this.http.get(this.restaurantsUrl)
+        .map(res => res.json().data as Restaurant[])
+        .catch(this.handleError);
     }
 
-    getRestaurant(id: number): Promise<Restaurant> {
-        return this.getRestaurants().then(restaurants => restaurants.find(restaurant => restaurant.id === id));
+    getRestaurant(id: Number): Observable<Restaurant> {
+        return this.getRestaurants()
+        .map(restaurants => restaurants.find(restaurant => restaurant.id === id))
+        .catch(this.handleError);
     }
 
     update(restaurant: Restaurant): Promise<Restaurant> {

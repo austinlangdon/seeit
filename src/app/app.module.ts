@@ -1,23 +1,18 @@
 import './rxjs-extensions'
+import 'hammerjs';
 
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-import { HttpModule } from '@angular/http';
 import { MaterialModule } from '@angular/material';
 import { routing, appRoutingProviders } from './app.routing';
 
 import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDataService } from './shared/services/in-memory-data-service.service';
+
 import { AppComponent } from './app.component';
-import { RestaurantDetailComponent } from './restaurant-detail/restaurant-detail.component';
-
 import { HomeModule } from './home/home.module';
-import { RestaurantModule } from './restaurant/restaurant.module';
 import { AuthModule } from './auth/auth.module';
-
-import 'hammerjs';
-import { AuthComponent } from './auth/auth.component';
+import { RestaurantModule } from './restaurant/restaurant.module';
 
 import {
   ApiService,
@@ -27,14 +22,14 @@ import {
   UserService
 } from './shared';
 
-
 @NgModule({
   imports: [
+    // Angular 2 modules
     BrowserModule,
-    FormsModule,
-    HttpModule,
-    InMemoryWebApiModule.forRoot(InMemoryDataService),
     [MaterialModule.forRoot()],
+
+    // Dishup modules
+    InMemoryWebApiModule.forRoot(InMemoryDataService),
     routing,
     SharedModule,
     AuthModule,
@@ -42,8 +37,7 @@ import {
     RestaurantModule
   ],
   declarations: [
-    AppComponent,
-    RestaurantDetailComponent
+    AppComponent
   ],
   providers: [
     appRoutingProviders,
