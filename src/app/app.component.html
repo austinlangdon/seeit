@@ -18,14 +18,14 @@
     </button>
     <span class="app-title">{{appTitle}}</span>
     <span class="app-toolbar-filler"></span>
-    <button md-icon-button [md-menu-trigger-for]="accountMenu">
+    <button md-icon-button (click)="myAccount()">
       <md-icon>account_circle</md-icon>
     </button>
     <md-menu x-position="before" #accountMenu="mdMenu">
-      <button md-menu-item> My Account </button>
+      <button md-menu-item> My profile </button>
       <button md-menu-item> Settings </button>
       <button md-menu-item> Help </button>
-      <button md-menu-item> Sign Out </button>
+      <button md-menu-item> Sign out </button>
     </md-menu>
   </md-toolbar>
 

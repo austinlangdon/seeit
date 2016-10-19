@@ -19,13 +19,5 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
     this.isAuthenticated = this.route.data['isAuthenticated'];
-
-    if(this.isAuthenticated) {
-      // TODO: show authenticated menues
-      return;
-    }   else {
-      // TODO: don't show authenticated menues
-      return;
-    }
   }
 }

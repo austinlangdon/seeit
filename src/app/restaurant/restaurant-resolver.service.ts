@@ -14,6 +14,6 @@ export class RestaurantResolver implements Resolve<Restaurant> {
 
     resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<any> {
         let id = Number(route.params['id']);
-        return this.restaurantService.getRestaurant(id);
+        return this.restaurantService.get(id);
     }
 }

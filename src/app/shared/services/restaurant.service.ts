@@ -13,10 +13,11 @@ export class RestaurantService {
     
     private restaurantsUrl = 'api/restaurants';
     private headers = new Headers({'Content-Type': 'application/json'});
+    private allRestaurantsConfig: RestaurantListConfig = { type: 'all', filters: {} };
 
     constructor(private http: Http, private apiService: ApiService) { }
 
-    query(config: RestaurantListConfig): Observable<{restaurants: Restaurant[], restaurantCount: number}> {
+    query(config: RestaurantListConfig): Observable<Restaurant[]> {
         let params: URLSearchParams = new URLSearchParams();
 
         Object.keys(config.filters)
@@ -29,17 +30,17 @@ export class RestaurantService {
             '/restaurants' + ((config.type === 'feed') ? '/feed' : ''),
             params
         )
-        .map(data => data);
+        .map(res => res.data as Restaurant[]);
     }
     
     get(id: Number): Observable<Restaurant> {
-        return this.apiService.get(`/restaurants/${id}`)
-            .map(res => res.data)
-            .catch(this.handleError);
+        return this.query(this.allRestaurantsConfig)
+        .map(restaurants => restaurants.find(restaurant => restaurant.id === id))
+        .catch(this.handleError);
     }
 
-    destroy(slug) {
-        return this.apiService.delete('/restaurants/' + slug);
+    destroy(id: Number) {
+        return this.apiService.delete('/restaurants/' + id);
     }
 
     save(restaurant): Observable<Restaurant> {
@@ -50,42 +51,6 @@ export class RestaurantService {
             return this.apiService.post('/restaurants', {restaurant: restaurant})
             .map(data => data.restaurant)
         }
-    }
-
-    getRestaurants(): Observable<Restaurant[]> {        
-        return this.http.get(this.restaurantsUrl)
-        .map(res => res.json().data as Restaurant[])
-        .catch(this.handleError);
-    }
-
-    getRestaurant(id: Number): Observable<Restaurant> {
-        return this.getRestaurants()
-        .map(restaurants => restaurants.find(restaurant => restaurant.id === id))
-        .catch(this.handleError);
-    }
-
-    update(restaurant: Restaurant): Promise<Restaurant> {
-        const url = `${this.restaurantsUrl}/${restaurant.id}`;
-        return this.http
-            .put(url, JSON.stringify(restaurant), { headers: this.headers })
-            .toPromise()
-            .then(() => restaurant)
-            .catch(this.handleError);
-    }
-
-    create(name: string): Promise<Restaurant> {
-        return this.http.post(this.restaurantsUrl, JSON.stringify({name: name}), {headers: this.headers})
-            .toPromise()
-            .then(res => res.json().data)
-            .catch(this.handleError);
-    }
-
-    delete(id: number): Promise<void> {
-        const url = `${this.restaurantsUrl}/${id}`;
-        return this.http.delete(url, {headers: this.headers})
-            .toPromise()
-            .then(() => null)
-            .catch(this.handleError);
     }
 
     private handleError(error: any) {

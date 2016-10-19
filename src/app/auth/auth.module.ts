@@ -1,5 +1,6 @@
 import { ModuleWithProviders, NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { MaterialModule } from '@angular/material';
 
 import { AuthComponent } from './auth.component';
 import { NoAuthGuard } from './no-auth-guard.service';
@@ -21,7 +22,8 @@ const authRouting: ModuleWithProviders = RouterModule.forChild([
 @NgModule({
     imports: [
         authRouting,
-        SharedModule
+        SharedModule,
+        MaterialModule
     ],
     declarations: [
         AuthComponent

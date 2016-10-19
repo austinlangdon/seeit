@@ -1,9 +1,10 @@
 <div class="search-input">
-    <md-input #searchBox id="search-box" (keyup)="search(searchBox.value)" placeholder="Search food"></md-input>
+    <md-input #searchBox id="search-box" (keyup)="search(searchBox.value)" placeholder="restaurant name, favorite food, cuisine"></md-input>
     <div>
       <div *ngFor="let restaurant of restaurants | async"
           (click)="gotoDetail(restaurant)" class="search-result">
           {{ restaurant.name }}
       </div>
     </div>
+    <button md-button>Dishup</button>
 </div>

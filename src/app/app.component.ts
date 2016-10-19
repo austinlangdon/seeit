@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
+import { MdMenuTrigger } from '@angular/material';
 
 import { UserService } from './shared';
 import { ApiService, RestaurantService } from './shared';
@@ -12,9 +14,13 @@ import 'rxjs/add/operator/map';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  title = 'app works!';
+  
+    @ViewChild(MdMenuTrigger) trigger: MdMenuTrigger;
 
+  title = 'app works!';
   appTitle = 'Dishup';
+  isAuthenticated: boolean;
+  
 
   views: Object[] = [
     {
@@ -36,18 +42,25 @@ export class AppComponent implements OnInit {
       route: '/favorites'
     }
   ];
-
+  
   constructor(
     private userService: UserService,
     private restaurantService: RestaurantService,
-    private apiService: ApiService
+    private apiService: ApiService,
+    private router: Router,
+    private route: ActivatedRoute
     ) {}
   
   ngOnInit() {
     this.userService.populate();
-    this.restaurantService.get('ra-sushi').map(data => {
-      console.log(data);
-    });
+    this.isAuthenticated  = this.route.data['isAuthenticated'];
+  }
 
+  myAccount() {
+    if(this.isAuthenticated) {
+      this.trigger.openMenu();
+    } else {
+      this.router.navigateByUrl('login');
+    } 
   }
 }

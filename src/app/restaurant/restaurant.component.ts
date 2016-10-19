@@ -33,14 +33,13 @@ export class RestaurantComponent implements OnInit {
     this.route.data.subscribe(
       (data: {restaurant: Restaurant}) => {
         this.restaurant = data.restaurant;
-        console.log(data);
       });
       
-    this.userService.currentUser
-    .subscribe((userData: User) => {
-      this.currentUser = userData
-      this.canModify = (this.currentUser.username === this.restaurant.owner.username); 
-    });
+    // this.userService.currentUser
+    // .subscribe((userData: User) => {
+    //   this.currentUser = userData
+    //   this.canModify = (this.currentUser.username === this.restaurant.owner.username); 
+    // });
   }
 
 }
