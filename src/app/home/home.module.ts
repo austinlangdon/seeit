@@ -6,7 +6,6 @@ import { HomeComponent } from './home.component';
 import { HomeAuthResolver } from './home-auth-resolver.service';
 import { SharedModule } from '../shared';
 import { RestaurantSearchComponent } from '../restaurant-search/restaurant-search.component';
-import { RestaurantSearchService } from '../shared/services/restaurant-search.service';
 
 const homeRouting: ModuleWithProviders = RouterModule.forChild([
     {
@@ -29,8 +28,7 @@ const homeRouting: ModuleWithProviders = RouterModule.forChild([
         RestaurantSearchComponent
     ],
     providers: [
-        HomeAuthResolver,
-        RestaurantSearchService
+        HomeAuthResolver
     ],
     exports: [HomeComponent]
 })

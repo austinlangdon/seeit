@@ -32,7 +32,7 @@ export class RestaurantService {
         )
         .map(res => res.data as Restaurant[]);
     }
-    
+
     get(id: Number): Observable<Restaurant> {
         return this.query(this.allRestaurantsConfig)
         .map(restaurants => restaurants.find(restaurant => restaurant.id === id))
