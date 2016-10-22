@@ -32,7 +32,6 @@ export class AuthComponent implements OnInit {
   submitForm() {
     this.isSubmitting = true;
     this.errors = {};
-
     this.userService.attemptAuth(this.authType, this.credentials)
     .subscribe(
       data => this.router.navigateByUrl('/'),
@@ -41,5 +40,6 @@ export class AuthComponent implements OnInit {
         this.isSubmitting = false;
       }
     );
+    
   }
 }
