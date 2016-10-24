@@ -19,25 +19,29 @@ import {
   AuthGuard,
   JwtService,
   SharedModule,
-  UserService
+  UserService,
+  HeaderComponent,
+  FooterComponent
 } from './shared';
 
 @NgModule({
+  declarations: [
+    AppComponent,
+    HeaderComponent,
+    FooterComponent
+  ],
   imports: [
     // Angular 2 modules
     BrowserModule,
     [MaterialModule.forRoot()],
 
     // Dishup modules
-    InMemoryWebApiModule.forRoot(InMemoryDataService),
+    // InMemoryWebApiModule.forRoot(InMemoryDataService),
     routing,
     SharedModule,
     AuthModule,
     HomeModule,
     RestaurantModule
-  ],
-  declarations: [
-    AppComponent
   ],
   providers: [
     appRoutingProviders,

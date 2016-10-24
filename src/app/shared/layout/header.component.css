@@ -1,0 +1,19 @@
+.app-toolbar-filler {
+    flex: 1 1 auto;
+}
+
+.nav-link {
+    font-size: 0.8em;
+    font-weight: 200;
+    color: #D3D3D3;
+    text-decoration: none;
+    margin: 0px 8px;
+}
+
+.nav-link:hover {
+    color: #fff;
+}
+
+.active {
+    color: #fff;
+}

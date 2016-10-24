@@ -19,7 +19,7 @@ export class AuthComponent implements OnInit {
   constructor(
     private router: Router,
     private route: ActivatedRoute,
-    private userService: UserService,
+    private userService: UserService
   ) { }
 
   ngOnInit() {
@@ -32,14 +32,16 @@ export class AuthComponent implements OnInit {
   submitForm() {
     this.isSubmitting = true;
     this.errors = {};
+    
     this.userService.attemptAuth(this.authType, this.credentials)
     .subscribe(
       data => this.router.navigateByUrl('/'),
       err => {
         this.errors = err;
         this.isSubmitting = false;
+        console.log(this.errors);
       }
     );
-    
+
   }
 }

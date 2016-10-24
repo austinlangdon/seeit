@@ -39,9 +39,9 @@ if (isProduction) {
 }
 
 
-app.get('/testing', function(req, res, next) {
-  res.json({message: 'Hurray!'});
-});
+// app.get('/testing', function(req, res, next) {
+//   res.json({message: 'Hurray!'});
+// });
 
 require('./models/User');
 require('./models/Restaurant');

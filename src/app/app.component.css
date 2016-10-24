@@ -5,7 +5,3 @@
 .app-content /deep/ md-card {
     margin: 1% 20%;
 }
-
-md-sidenav-layout md-toolbar .app-toolbar-filler {
-    flex: 1 1 auto;
-}
