@@ -40,4 +40,8 @@ export class EditorComponent implements OnInit {
             this.isSubmitting = false;
         });
     }
+
+    ngOnInit() {
+        
+    }
 }

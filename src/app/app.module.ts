@@ -21,7 +21,10 @@ import {
   SharedModule,
   UserService,
   HeaderComponent,
-  FooterComponent
+  FooterComponent,
+  GeolocationService,
+  FoursquareApiService,
+  SearchVenuesService
 } from './shared';
 
 @NgModule({
@@ -48,7 +51,10 @@ import {
     ApiService,
     AuthGuard,
     JwtService,
-    UserService
+    UserService,
+    GeolocationService,
+    FoursquareApiService,
+    SearchVenuesService
   ],
   bootstrap: [AppComponent]
 })
