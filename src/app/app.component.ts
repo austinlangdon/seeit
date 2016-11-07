@@ -3,7 +3,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 
 import { UserService } from './shared';
 import { User } from './shared';
-import { ApiService, RestaurantService } from './shared';
+import { ApiService, RestaurantService, GeolocationService } from './shared';
 
 import {Observable} from 'rxjs/Rx';
 
@@ -47,11 +47,13 @@ export class AppComponent implements OnInit {
     private restaurantService: RestaurantService,
     private apiService: ApiService,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private geolocationService: GeolocationService
     ) {}
   
   ngOnInit() {
     this.userService.populate();
+    
     this.isAuthenticated  = this.route.data['isAuthenticated'];
 
     this.userService.currentUser.subscribe(user => {
@@ -59,6 +61,8 @@ export class AppComponent implements OnInit {
             console.log(user);  
         });
   }
+
+
 
   signOut() {
         this.userService.purgeAuth();

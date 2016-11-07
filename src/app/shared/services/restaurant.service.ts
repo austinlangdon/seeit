@@ -24,13 +24,14 @@ export class RestaurantService {
         .forEach((key) => {
             params.set(key, config.filters[key]);
         });
-
+        
         return this.apiService
         .get(
             '/restaurants' + ((config.type === 'feed') ? '/feed' : ''),
             params
         )
-        .map(res => res.data as Restaurant[]);
+        .map(res => res.data as Restaurant[])
+        .catch(this.handleError);
     }
 
     get(id: Number): Observable<Restaurant> {

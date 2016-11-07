@@ -45,41 +45,42 @@ export class RestaurantSearchComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.restaurants = this.searchTerms
-      .debounceTime(300)
-      .distinctUntilChanged()
-      .switchMap(term => {
-        if(term) { 
-          this.listConfig = { type: 'all', filters: { name: term } };
-          return this.restaurantService.query(this.listConfig);
-        } else { 
-          return Observable.of<Restaurant[]>([]);
-        }
-      })
-      .catch(error => {
-        console.log(error);
-        return Observable.of<Restaurant[]>([]);
-      });
-  }
+    // this.restaurants = this.searchTerms
+    //   .debounceTime(300)
+    //   .distinctUntilChanged()
+    //   .switchMap(term => {
+    //     if(term) { 
+    //       this.listConfig = { type: 'all', filters: { name: term } };
+    //       return this.restaurantService.query(this.listConfig);
+    //     } else { 
+    //       return Observable.of<Restaurant[]>([]);
+    //     }
+    //   })
+    //   .catch(error => {
+    //     console.log(error);
+    //     return Observable.of<Restaurant[]>([]);
+    //   });
 
-  // fs venues implementation
-  ngOnInit2() {    
     this.geolocationService.getCurrentPosition().map(position => {
       this.geoCordinates = `${position.coords.latitude},${position.coords.longitude}`;
-    });
+    }).subscribe();
 
+    // foursquare api venues implementation
     this.venues = this.searchVenueTerms
       .debounceTime(300)
       .distinctUntilChanged()
       .switchMap(term => {
+        console.log(term);
         if(term) {
           this.searchVenuesConfig = { 
             parameters: { 
               ll: this.geoCordinates, 
               client_id: 'AFCY3CCS1Q30G41CRKQKSR3VXOBRW3LHMEG2KOUA5ZHD3IQ4', 
-              client_secret: 'D5OKRCVTFR2C5MT1T3WPVLITIF1AI3UB0TNM02FC43LR3NMS'
+              client_secret: 'D5OKRCVTFR2C5MT1T3WPVLITIF1AI3UB0TNM02FC43LR3NMS',
+              v: '20161106'
             }
           };
+          console.log('test');
           return this.searchVenuesService.query(this.searchVenuesConfig);
         } else {
           return Observable.of<Restaurant[]>([]);
@@ -89,7 +90,6 @@ export class RestaurantSearchComponent implements OnInit {
         console.log(error);
         return Observable.of<Restaurant[]>([]);
       });
-    
   }
 
   gotoDetail(restaurant: Restaurant): void {

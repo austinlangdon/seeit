@@ -1,8 +1,17 @@
-<div class="search-input">
+<!--<div class="search-input">
     <md-input #searchBox id="search-box" (keyup)="search(searchBox.value)" placeholder="restaurant name, favorite food, cuisine"></md-input>
     <div>
       <div *ngFor="let restaurant of restaurants | async"
           (click)="gotoDetail(restaurant)" class="search-result">
+          {{ restaurant.name }}
+      </div>
+    </div>
+</div>-->
+<div class="search-input">
+    <md-input #searchBox id="search-box" (keyup)="searchVenue(searchBox.value)" placeholder="restaurant name, favorite food, cuisine"></md-input>
+    <div>
+      <div *ngFor="let venue of venues | async"
+          (click)="gotoDetail(venue)" class="search-result">
           {{ restaurant.name }}
       </div>
     </div>

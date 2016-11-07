@@ -14,7 +14,7 @@ export class FoursquareApiService {
         private jwt: JwtService
     ) {}
 
-    apiUrl = 'https://api.foursquare.com/v2';
+    private apiUrl = 'https://api.foursquare.com/v2';
 
     // sets Content-Type and Accept headers to application/json
     // if jwt token exists, sets Authentication header to token
@@ -24,9 +24,6 @@ export class FoursquareApiService {
             'Accept': 'application/json'
         };
 
-        if(this.jwt.getToken()) {
-            headersConfig['Authorization'] = `Token ${this.jwt.getToken()}`;
-        }
         return new Headers(headersConfig);
     }
 
@@ -36,10 +33,10 @@ export class FoursquareApiService {
     }
 
     get(url: string, params: URLSearchParams = new URLSearchParams()): Observable<any> {
-        return this.http.get(`${this.apiUrl}${url}`, { headers: this.setHeaders(), search: params })
+        console.log('fs api service');
+        
+        return this.http.get(`${this.apiUrl}${url}`, { search: params })
         .catch(this.formatErrors)
         .map((res: Response) => res.json());
     }
-
-    
 }

@@ -17,16 +17,25 @@ export class SearchVenuesService {
     
     constructor(
         private http: Http,
-        private apiService: FoursquareApiService
+        private foursquareApiService: FoursquareApiService
      ) { }
 
      query(config: SearchVenuesConfig): Observable<Restaurant[]> {
+         this.isLoading = true;
          let params: URLSearchParams = new URLSearchParams();
          
-         
-
-         this.isLoading = true;
-         return this.apiService.get('/venues/search', params)
-            .map(res => res.data as Restaurant[])
+         Object.keys(config.parameters).forEach(key => {
+             params.set(key, config.parameters[key]);
+         });
+         console.log('search-venues-service');
+         return this.foursquareApiService.get('/venues/search', params)
+            // .map(res => res.data as Restaurant[])
+            .map(res => console.log(res))
+            .catch(this.handleError);
+     }
+     
+     private handleError(error: any) {
+         console.error('An error has occured: ', error);
+         return Promise.reject(error.message || error);
      }
 }

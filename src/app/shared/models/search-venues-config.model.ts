@@ -17,5 +17,6 @@ export class SearchVenuesConfig {
         linkedId?: string;
         client_id: string;
         client_secret: string;
+        v: string;
     }
 }
