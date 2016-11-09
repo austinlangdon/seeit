@@ -24,7 +24,7 @@ import {
   FooterComponent,
   GeolocationService,
   FoursquareApiService,
-  SearchVenuesService
+  VenueService
 } from './shared';
 
 @NgModule({
@@ -54,7 +54,7 @@ import {
     UserService,
     GeolocationService,
     FoursquareApiService,
-    SearchVenuesService
+    VenueService
   ],
   bootstrap: [AppComponent]
 })

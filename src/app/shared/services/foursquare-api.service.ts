@@ -33,7 +33,6 @@ export class FoursquareApiService {
     }
 
     get(url: string, params: URLSearchParams = new URLSearchParams()): Observable<any> {
-        console.log('fs api service');
         
         return this.http.get(`${this.apiUrl}${url}`, { search: params })
         .catch(this.formatErrors)

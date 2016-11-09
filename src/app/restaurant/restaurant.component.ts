@@ -6,23 +6,22 @@ import 'rxjs/add/operator/toPromise';
 
 import 'rxjs/add/operator/map';
 
-import { Restaurant, User, RestaurantService, UserService } from '../shared';
+import { Venue, User, VenueService, UserService } from '../shared';
 
 
 @Component({
   selector: 'restaurant',
   templateUrl: './restaurant.component.html',
   styleUrls: ['./restaurant.component.css'],
-  providers: [RestaurantService]
+  providers: [VenueService]
 })
 export class RestaurantComponent implements OnInit {
 
-  restaurant: Restaurant;
+  venue: Venue;
   currentUser: User;
   canModify: boolean;
 
   constructor(
-    private restaurantService: RestaurantService,
     private route: ActivatedRoute,
     private location: Location,
     private http: Http,
@@ -31,8 +30,8 @@ export class RestaurantComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.data.subscribe(
-      (data: {restaurant: Restaurant}) => {
-        this.restaurant = data.restaurant;
+      (data: {venue: Venue}) => {
+        this.venue = data.venue;
       });
       
     // this.userService.currentUser

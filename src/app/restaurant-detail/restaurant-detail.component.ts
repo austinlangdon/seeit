@@ -2,23 +2,23 @@ import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { Location } from '@angular/common';
 
-import { Restaurant } from '../shared/models/restaurant.model';
-import { RestaurantService } from '../shared/services/restaurant.service';
+import { Venue } from '../shared';
+import { VenueService } from '../shared';
 
 
 @Component({
   selector: 'app-restaurant-detail',
   templateUrl: './restaurant-detail.component.html',
   styleUrls: ['./restaurant-detail.component.css'],
-  providers: [RestaurantService]
+  providers: [VenueService]
 })
 export class RestaurantDetailComponent implements OnInit {
 
   @Input()
-  restaurant: Restaurant;
+  venue: Venue;
 
   constructor(
-    private restaurantService: RestaurantService,
+    private venueService: VenueService,
     private route: ActivatedRoute,
     private location: Location
   ) { }
@@ -26,7 +26,7 @@ export class RestaurantDetailComponent implements OnInit {
   ngOnInit(): void {
     this.route.params.forEach((params: Params) => {
       let id = +params['id'];
-      this.restaurantService.get(id).map(restaurant => this.restaurant = restaurant);
+      // this.venueService.get(id).map(venue => this.venue = venue);
     } )
   }
 

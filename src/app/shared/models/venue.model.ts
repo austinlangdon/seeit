@@ -1,0 +1,40 @@
+import { Menu } from './menu.model';
+import { User } from './user.model';
+
+export class Venue {
+    id: string;
+    name: string;
+    contact: Object;
+    location: Object;
+    categories: Array<any>;
+    verified: boolean;
+    stats: any;
+    url: string;
+    hours: string;
+    popular: any;
+    menu: Object;
+    price: Object;
+    rating: Object;
+    specials: Array<any>;
+    hereNow: any;
+    storeId: any;
+    description: any;
+    createdAt: any;
+    mayor: any;
+    tips: any;
+    listed: any;
+    tags: any;
+    beenHere: any;
+    shortUrl: any;
+    canonicalUrl: any;
+    specialsNearby: any;
+    photos: any;
+    likes: any;
+    like: any;
+    dislike: any;
+    phrases: any;
+    attributes: any;
+    roles: any;
+    flags: any;
+    page: any;
+}

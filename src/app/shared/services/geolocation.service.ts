@@ -6,7 +6,9 @@ import { Observable } from 'rxjs/Observable';
 @Injectable()
 export class GeolocationService {
     constructor() {}
-    
+
+    currentCordinates: string;
+
     getCurrentPosition(): Observable<any> {
         return new Observable((observer: Observer<Position>) => {
             navigator.geolocation.getCurrentPosition(
@@ -21,5 +23,12 @@ export class GeolocationService {
                 }
             );
         });
+    }
+
+    setCurrentPosition() { 
+        this.getCurrentPosition().map(position => {
+            this.currentCordinates = `${position.coords.latitude},${position.coords.longitude}`;
+        })
+        .subscribe();
     }
 }

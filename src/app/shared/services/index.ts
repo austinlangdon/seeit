@@ -6,4 +6,4 @@ export * from './in-memory-data-service.service';
 export * from './restaurant.service';
 export * from './geolocation.service';
 export * from './foursquare-api.service';
-export * from './search-venues.service';
+export * from './venue.service';

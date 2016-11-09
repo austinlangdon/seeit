@@ -13,7 +13,7 @@ const restaurantsRoutes: ModuleWithProviders = RouterModule.forChild([
         path: 'restaurant/:id',
         component: RestaurantComponent,
         resolve: {
-            restaurant: RestaurantResolver
+            venue: RestaurantResolver
         }
     }
 ]);
